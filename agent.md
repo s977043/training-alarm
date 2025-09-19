@@ -1,15 +1,15 @@
-# Agent Instructions
+# エージェント向けガイドライン
 
-This file contains instructions and guidelines for automated agents contributing to this repository.  The goal of the agent is to assist in building and maintaining a training alarm application following a domain‑driven architecture.  Agents should respect the separation of concerns between the user interface, business logic and infrastructure.
+このファイルには、このリポジトリに貢献する自動エージェント用の指針とガイドラインが記述されています。エージェントの目的は、ドメイン驅動設計に従ったトレーニングアラームアプリの構築と維持を支援することです。ユーザーインターフェース、ビジネスロジック、インフラの関心の分離を尊重してください。
 
-## Guidelines
+## ガイドライン
 
-1. **Use Domain Types** – All logic related to cue calculation or timer progress should live in the `src/entities` and `src/usecases` folders.  Components and hooks should not perform calculations directly.
-2. **Avoid Side Effects in Use Cases** – The functions in `src/usecases` must be pure.  They may accept current time or preset definitions as arguments but should never trigger audio playback or storage writes.
-3. **Communicate Through Ports** – Any interaction with the outside world (audio, notifications, haptics, storage) should go through the interfaces defined under `src/services`.  If a new platform requires additional behaviour, add a new adapter in `src/adapters` rather than modifying the core logic.
-4. **Keep UI Dumb** – Components in `src/ui` should remain as stateless as possible.  They receive props describing what to render and emit callbacks when the user interacts with the view.
-5. **Write Tests** – When adding or modifying behaviour, accompany the change with appropriate tests under `tests/`.  Use unit tests for pure functions and integration tests for session runners.
+1. **ドメイン型を利用すること** – 合国の計算やタイマー進行に関連するすべてのロジックは `src/entities` と `src/usecases` フォルダーに置いてください。コンポーネントやフックで直接計算を行わないようにします。
+2. **ユースケース内で副作用を避ける** – `src/usecases` の関数は統留でなければなりません。現在時刻やプリセット定義を引数として受け受け反省があっても、音声再生やストレージ書き込みを行ってはいけません。
+3. **ポートを通じて外部と通信する** – 音声や通知、ハプティクス、ストレージなど外界とのやり取りはすべて `src/services` で定義されたインターフェースを介して行います。新しいプラットフォームで追加の挙動が必要になった場合は、コアロジックを変更するのではなく `src/adapters` に新しいアダプタを追加してください。
+4. **UIを可能な限りシンプルに保つ** – `src/ui` のコンポーネントはできるだけステートレスにします。描画すべき内容を示すプロップを受け受かんで、ユーザーがビューと交互したときにコールバックを発火します。
+5. **テストを書く** – 挙動を追加・変更する際は、必ず `tests/` 配下に適切なテストを追加してください。統留な関数にはユニットテストを、セッションランナーには統合テストを用います。
 
-## Getting Started
+## はじめに
 
-To add a new feature, determine which layer it belongs in.  For example, a new type of cue announcement would first require an update to the entities (to represent the cue), a pure use case to generate the cue, a port method to perform the announcement and an adapter to implement the port.  Then a presenter and UI component can display or play the cue in the application.
+新しい機能を追加する場合、その機能がどのレイヤーに属するかをまず判断してください。例えば、新しい種類の合国をアナウンスするには、まず合国を表すエンティティの更新が必要です。次に、その合国を生成する統留なユースケース、アナウンスを実行するポートメソッド、そしてそのポートを実装するアダプターを追加します。その後、プレゼンターとUIコンポーネントがアプリ内で合国を表示または再生できるようにします。
