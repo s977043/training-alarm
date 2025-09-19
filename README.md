@@ -1,19 +1,19 @@
-# Training Alarm App
+# トレーニングアラームアプリ
 
-This project is an **Expo** (React Native + TypeScript) application that functions as a training timer.  It helps athletes and hobbyists keep track of exercise intervals by providing auditory, visual and haptic cues over configurable durations.  The design follows a domain‑driven architecture to cleanly separate UI concerns from business logic and infrastructure.
+このプロジェクトは **Expo**（React Native + TypeScript）製のトレーニングタイマーアプリです。設定した時間に応じて音声・視覚・振動の合国を送り、アスリートや愛好家が運動のインターバルを管理できるようにします。UIとビジネスロジック、インフラを明確に分離するためにドメイン驅動設計に基づいて設計されています。
 
-The app ships with a few preset durations (30 s, 60 s, 80 s) and announces halfway points, extra milestones and a final countdown.  Users can extend it with custom presets and swap audio packs without modifying the core timer logic.
+アプリには30秒・60秒・80秒などのプリセットが用意されており、途中続、追加のマイルストーン、終了前のカウントダウンを知らせます。ユーザーはプリセットを自由に追加したり、音声パックを入れ替えたりしてもタイマーの核心部分を変更する必要はありません。
 
-## Structure
+## 構成
 
-The repository is organised around domain entities, use cases, service ports and concrete adapters.  Under `app/` lives the Expo router entrypoints and screens.  The `src/` folder contains most of the logic:
+このリポジトリはドメインエンティティ、ユースケース、サービスのポートと具象アダプターごとに整理されています。`app/` には Expo Router のエントリーポイントと画面コンポーネントがあり、ほとんどのロジックは `src/` フォルダーに含まれています。
 
-- **entities/** – pure data types like `TimerPreset`, `Cue` and `Session`.
-- **usecases/** – pure functions that derive cues and countdown plans.
-- **services/** – interfaces for playing audio, scheduling notifications and reading the current time.  These have no implementation details.
-- **adapters/** – concrete implementations of services using Expo libraries.
-- **features/** – hooks and presenters that translate domain state into UI state.
-- **ui/** – purely presentational components and styling utilities.
-- **lib/** – small helper functions and i18n strings.
+- **entities/** － `TimerPreset`、`Cue`、`Session` のような統留なデータ型を定義します。
+- **usecases/** － 合国やカウントダウンの計画を引き出す統留な関数を定義します。
+- **services/** － 音声再生、通知スケジューリング、現在時刻の取得など、外部とのやり取りを表すインターフェースです。実装は含みません。
+- **adapters/** － Expo のライブラリを用いたサービスの具体的な実装が入ります。
+- **features/** － ドメインの状態をUIの状態に変換するフックやプレゼンターを含みます。
+- **ui/** － 見た目に関わる統留なコンポーネントやスタイルユティリティです。
+- **lib/** － 細かなヘルパー関数や国際化文字列などが入ります。
 
-There are also folders for tests, documentation and build scripts.  See `docs/` for more detailed specifications.
+このほかにテスト、ドキュメント、ビルドスクリプトのフォルダがあります。詳細な仕様は `docs/` を参照してください。
