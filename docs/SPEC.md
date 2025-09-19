@@ -1,11 +1,11 @@
-# Specifications
+# 仕様書
 
-This document describes the behaviour of the training alarm application.  It includes the rules for when cues are triggered during a session and the expected user interactions.
+このドキュメントはトレーニングアラームアプリの動作を説明します。セッション中にどのタイミングで合国が出るかや、想定されるユーザーの操作についてまとめています。
 
-## Preset Rules
+## プリセットのルール
 
-- **30 seconds** – announce halfway at 15 s and start a 10 second countdown from 20 s.
-- **60 seconds** – announce halfway at 30 s, announce at 45 s, and start a 10 second countdown from 50 s.
-- **80 seconds** – announce halfway at 40 s, announce at 60 s, and start a 10 second countdown from 70 s.
+- **30秒**：15秒で半分を知らせ、20秒から10秒のカウントダウンを開始します。
+- **60秒**：30秒で半分を知らせ、45秒でも知らせ、50秒から10秒のカウントダウンを開始します。
+- **80秒**：40秒で半分を知らせ、60秒でも知らせ、70秒から10秒のカウントダウンを開始します。
 
-Users may configure additional presets.  See `src/entities/TimerPreset.ts` for the structure of a preset.
+プリセットは追加で自由に設定できます。プリセットの構造については `src/entities/TimerPreset.ts` を参照してください。
